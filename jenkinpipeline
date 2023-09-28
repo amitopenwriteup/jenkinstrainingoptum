@@ -1,0 +1,20 @@
+pipeline {
+agent any
+stages {
+ stage('create directory'){
+  steps {
+   script {
+     sh 'mkdir -p amit'
+     writeFile file: 'amit/jenkins.txt', text: 'Hi I am amit'
+   }
+  }
+ }
+ stage('storing the file'){
+  steps {
+   script {
+    archiveArtifacts artifacts: 'amit/*.txt', followSymlinks: false
+   }
+  }
+ }
+}
+}
