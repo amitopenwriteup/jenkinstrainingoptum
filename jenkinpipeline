@@ -4,15 +4,15 @@ stages {
  stage('create directory'){
   steps {
    script {
-     sh 'mkdir -p amit'
-     writeFile file: 'amit/jenkins.txt', text: 'Hi I am amit'
+     sh 'mkdir -p output'
+     writeFile file: 'output/jenkins.txt', text: 'Hi I am amit'
    }
   }
  }
  stage('storing the file'){
   steps {
    script {
-    archiveArtifacts artifacts: 'amit/*.txt', followSymlinks: false
+    archiveArtifacts artifacts: 'output/*.txt', followSymlinks: false
    }
   }
  }
